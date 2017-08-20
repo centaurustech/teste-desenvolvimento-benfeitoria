@@ -31,8 +31,17 @@ class PostController extends Controller
     function show($id) {
 
         $post = Post::find($id);
+        
+        //separate authors by commas
+        $authors = '';
+        foreach($post->authors as $author) { 
+            $authors .= $author->name.', ';
+        }
 
-        return view('post.show')->with('post', $post);
+        //deleting comma ending
+        $authors = rtrim($authors, ', ');
+        
+        return view('post.show')->with('post', $post)->with('authors', $authors);
     }
 
     /**
@@ -43,28 +52,29 @@ class PostController extends Controller
      */
     function save(PostRequest $req) {
 
+        $post               = new Post();
+        $file = Input::file('cover');
 
-        $file = Input::file('cover'); // retorna o objeto em questão
-        $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
-        // var_dump($file);
-        // var_dump(\Input::hasFile('photo'));
+        if($file) {
 
-        $destinationPath = public_path().DIRECTORY_SEPARATOR.'cover';
-        $fileName = pathinfo($file->getClientOriginalName())['basename'];
+            $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+            $destinationPath = public_path().DIRECTORY_SEPARATOR.'cover';
+            $fileName = pathinfo($file->getClientOriginalName())['basename'];
 
-        //var_dump($file->move($destinationPath.DIRECTORY_SEPARATOR.'tmp'));
-        $file->move($destinationPath, $fileName);
+            $file->move($destinationPath, $fileName);
 
-    	$post 				= new Post();
+            $post->image_path   = '/cover/'.$fileName;
+        }
+        
     	$post->title  		= $req->title;
     	$post->description  = $req->description;
-    	$post->image_path   = '/cover/'.$fileName;
 
     	
         if($post->save()) {
 
             $post->tags()->sync($req->tags, false);                
             $post->authors()->sync($req->authors, false);                
+            
             $req->session()->flash('alert-success', 'Post criado com sucesso!!');
     		
             return redirect('/');    	

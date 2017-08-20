@@ -19,7 +19,7 @@
 					<input name="_token" type="hidden" value="{{ csrf_token() }}">
 					<div class="form-group">
 						<label for="exampleTextarea">Título</label>
-						<input type="text" class="form-control" id="title" name="title" />
+						<input type="text" class="form-control" id="title" name="title" value="{{old('title')}}" />
 					</div>
 					<div class="container-fluid container-fullw">
 						<div class="row">
@@ -29,7 +29,7 @@
 										<p class="margin-bottom-30">
 											Descreva aqui o conteuido principal da postagem.
 										</p>
-										<textarea class="ckeditor form-control" cols="10" rows="10"  id="description" name="description"></textarea>
+										<textarea class="ckeditor form-control" cols="10" rows="10"  id="description" name="description" > {{old('description')}} </textarea>
 									</div>
 								</div>
 							</div>
@@ -54,7 +54,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<select class="form-control" id="tags" multiple="true" name="tags[]" ng-model="tags.tags" >
-									<option ng-repeat="tag in tags" value="@{{tag.id}}">@{{tag.tag_name}}</option>
+									<option ng-repeat="tag in tags" value="@{{tag.id}}"  @if (old('tags')) selected="selected" @endif >@{{tag.tag_name}}</option>
 								</select>
 							</div>
 							<div class="col-md-6">
@@ -65,12 +65,13 @@
 						</div>
 						<div id="tagMsg"></div>
 					</div>
+					
 					<div class="form-group" ng-controller="AuthorController">
 						<label for="">Adicionar autor(es)</label>
 						<div class="row">
 							<div class="col-md-6">
-								<select class="form-control" id="authors" multiple="true" name="authors[]" ng-model="authors.authors" >
-									<option ng-repeat="author in authors" value="@{{author.id}}">@{{author.name}}</option>
+								<select  class="form-control" id="authors" multiple="true" name="authors[]" ng-model="authors.authors" >
+									<option ng-repeat="author in authors" value="@{{author.id}}" @if (old('authors')) selected="selected" @endif >@{{author.name}}</option>
 								</select>
 							</div>
 							<div class="col-md-6">
@@ -116,7 +117,7 @@
 			</div>
 
 						<!-- MODAL  -->
-			<div class="modal  fade" id="authorModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true"	 ng-controller="AuthorController">
+			<div class="modal  fade" id="authorModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -130,7 +131,7 @@
 								<legend>
 									Criar Autor
 								</legend>
-								<form name="frmTag">
+								<form name="frmAuthor" ng-controller="AuthorController">
 									<input name="_token" type="hidden" value="{{ csrf_token() }}">
 									<div class="form-group">
 										<label for="exampleTextarea">Nome: </label>

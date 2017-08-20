@@ -14,8 +14,13 @@ class CreateTablePostAuthor extends Migration
     public function up()
     {
         Schema::create('post_author', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('post_id')->unsigned();
+            $table->integer('author_id')->unsigned();
+            $table->primary(['post_id','author_id']);
+            $table->foreign('post_id')->references('id')->on('posts')
+            ->onUpdate('cascade');
+            $table->foreign('author_id')->references('id')->on('authors')
+            ->onUpdate('cascade');
         });
     }
 

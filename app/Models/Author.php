@@ -10,6 +10,6 @@ class Author extends Model
 
     public function posts()
     {
-        return $this->belongsToMany('App\Models\Post');
+        return $this->belongsToMany('App\Models\Post', 'post_author', 'author_id', 'post_id');
     }
 }
