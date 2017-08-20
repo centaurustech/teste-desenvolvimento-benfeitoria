@@ -9,6 +9,10 @@ a {
 	color: #FFF !important;
 
 }
+
+ .dropdown a:hover {
+  background-color: #e41847 !important;
+}
 .hover {
     background: #3374C2;
 }
@@ -29,11 +33,6 @@ a {
 	margin-top: 50px !important;
 }
 
- a:hover {
-  background-color: #d21641  !important;
-  filter: none !important;
-}
-
 .footer {
 	margin-top: 60px;
 	margin-bottom: 0;
@@ -47,6 +46,7 @@ a {
   margin: auto !important;
   text-align: center !important;
   font-family: arial !important;
+  margin-bottom: 30px !important;
 }
 
 .container1 {
