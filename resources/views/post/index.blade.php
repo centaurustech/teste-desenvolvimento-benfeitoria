@@ -14,7 +14,12 @@
 		@foreach($posts as $post)
 		    <div class="col-6 col-md-4">
 		      	<div class="card1">
-				  	<img src="{{$post->image_path}}" alt="capa" style="width:100%">
+		      		@if($post->image_path)
+				  		<img src="{{$post->image_path}}" alt="capa" style="width:100%">
+				  	@else
+				  		<img src="/img/no-image.png" alt="capa" style="width:100%">
+				  	@endif
+
 				  	<div class="containe1r">
 					    <p class="title1">{{ $post->title }}</p>
 					    <p>{!! str_limit($post->description) !!}</p>

@@ -27,13 +27,11 @@
         <ul class="nav navbar-nav">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{{ route('post.index') }}">Inicio</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Link</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" style="background-color: #e41847" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrativo <span class="caret"></span></a>
               <ul class="dropdown-menu header-bg">
                 <li><a href="{{ route('post.create') }}">Criar post</a></li>
-                <li><a href="{{ route('post.create') }}">Criar tags</a></li>
+                <li><a href="{{ route('post.index') }}">Lista de posts</a></li>
               </ul>
             </li>
           </ul>

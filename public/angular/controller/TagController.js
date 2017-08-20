@@ -1,7 +1,6 @@
 app.controller('TagController', function($scope, $http, API_URL, tagAPI)
 	{
-		$scope.pageSize = 5;
-		$scope.currentPage = 1;
+
 		tagAPI.getTags()
 		.success(function(response)
 		{
@@ -10,11 +9,7 @@ app.controller('TagController', function($scope, $http, API_URL, tagAPI)
 
 		$scope.toggle = function(modalstate) {
 		  $scope.modalstate = modalstate;
-		  switch(modalstate) {
- 			case 'tags':
-		    default:
-		      break;
-		  }
+		  
 		  if(modalstate === 'tags' || modalstate === 'edit')
 		  {
 		  	$('#tagModal').modal('show');

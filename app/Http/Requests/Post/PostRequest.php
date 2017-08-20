@@ -19,9 +19,11 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-                'title' => 'required',
-                'description' => 'required',
-                'cover' => 'mimes:jpeg,bmp,png,jpg'
+                'title'         => 'required',
+                'description'   => 'required',
+                'cover'         => 'mimes:jpeg,bmp,png,jpg',
+                'tags'          => 'required',
+                'authors'       => 'required',
                 ];
     }
 
@@ -30,7 +32,9 @@ class PostRequest extends FormRequest
         return [
             'title.required'        => 'Titulo da postagem é obrigatório',
             'description.required'  => 'Descricao da postagem é obrigatório',
-            'cover.mimes'  => 'Formato da imagem invalido',
+            'tags.required'         => 'Campo tags da postagem é obrigatório',
+            'authors.required'      => 'Campo autor da postagem é obrigatório',
+            'cover.mimes'           => 'Formato da imagem invalido',
 
         ];
     }
