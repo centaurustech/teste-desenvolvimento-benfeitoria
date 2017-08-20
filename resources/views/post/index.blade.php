@@ -17,13 +17,21 @@
 				  <div class="containe1r">
 				    <p class="title1">{{ $post->title }}</p>
 				    <p>{{ $post->description }}</p>
-				    
-				   <p><button>Ler mais</button></p>
+
+				    <table>
+				    	<tr>Tags:</tr>
+					    @foreach($post->tags as $tag)
+						    <tr>
+						        {{$tag->tag_name}}
+						    </tr>
+					    @endforeach
+				    </table>
+				   	<a href="{{ route('post.show', [ 'id' => $post->id ]) }}">
+				    	<button>Ler mais</button>
+				  	</a>
 				  </div>
 				</div>
 		    </div>
 		@endforeach
-
-
 	</div>
 @stop
