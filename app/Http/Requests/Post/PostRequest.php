@@ -21,6 +21,7 @@ class PostRequest extends FormRequest
         return [
                 'title' => 'required',
                 'description' => 'required',
+                'cover' => 'mimes:jpeg,bmp,png,jpg'
                 ];
     }
 
@@ -29,6 +30,7 @@ class PostRequest extends FormRequest
         return [
             'title.required'        => 'Titulo da postagem é obrigatório',
             'description.required'  => 'Descricao da postagem é obrigatório',
+            'cover.mimes'  => 'Formato da imagem invalido',
 
         ];
     }

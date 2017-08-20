@@ -1,10 +1,17 @@
-body {
-	background-color: #ecf0f1!important;
+body, html {
+    background-color: #ecf0f1!important;
 }
 
-.content {
-	padding-top: 7px;
+h1 {
+  text-align: center; 
 }
+.content {
+  height: 100%;
+  width: 100%;
+	padding-top: 7px;
+  background-color: #ecf0f1!important;
+}
+
 a {
 	color: #FFF !important;
 
@@ -32,6 +39,18 @@ a {
 	height: 380px !important;
 	margin-top: 50px !important;
 }
+
+.post-content {
+    margin-top: 50px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.post-tag {
+  font-style: italic;
+}
+
+
 
 .footer {
 	margin-top: 60px;

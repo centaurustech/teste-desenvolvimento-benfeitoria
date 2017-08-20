@@ -41,16 +41,27 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-  <div class="container">
-    <div class="content">
+  <div class="content">
+    <div class="container">
       @yield('content')
     </div>
   </div>
 
-
+  <script src="/assets/ckeditor/ckeditor.js"></script>
+  <script src="/assets/ckeditor/adapters/jquery.js"></script>
+  <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+  <script src="/assets/js/letter-icons.js"></script>
+  <!-- start: JavaScript Event Handlers for this page -->
+  <script src="/assets/js/form-text-editor.js"></script>
+  <script>
+    jQuery(document).ready(function() {
+      TextEditor.init();
+    });
+  </script>
 <script type="text/javascript">
   $(document).ready(function(){
     $("#tags").select2();
+    $("#authors").select2();
   })
 </script>
 @include('shared.script.angular')

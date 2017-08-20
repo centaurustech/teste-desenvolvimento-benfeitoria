@@ -23,7 +23,12 @@ Route::prefix('/post')->group(function () {
 /*API's*/
 Route::prefix('/api')->group(function () {
 
+	// API FOR TAGS
 	Route::get('tags/{id?}', 'Tag\TagController@indexAPI');
 	Route::post('tags/add', 'Tag\TagController@add');
+
+	// API FOR AUTHORS
+	Route::get('authors/{id?}', 'Author\AuthorController@indexAPI');
+	Route::post('author/add', 'Author\AuthorController@add');
 
 });
